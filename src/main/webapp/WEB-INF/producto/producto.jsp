@@ -34,7 +34,8 @@
 			<br>
 			<form:select class="form-select" path="categorias">
 				<c:forEach var="categoria" items="${listaCategoria}">
-					<form:option value="${categoria.getId()}">${categoria.getNombre()}</form:option>
+					<form:option value="${categoria.getId()}">${categoria.getNombre()}
+					</form:option>
 				</c:forEach>
 			</form:select>
 			<br>	
@@ -46,7 +47,7 @@
 	
 		<br>
 		<hr>
-		<h2>Crear Producto</h2>
+		<h2>Productos</h2>
 		<form class="d-flex">
 			<input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
 			<button class="btn btn-outline-success" type="submit">Buscar</button>

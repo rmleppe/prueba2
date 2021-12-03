@@ -17,24 +17,30 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item" >
-                <a class="nav-link active" aria-current="page" href="producto">Productos</a>
-              </li>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+              <ul class="navbar-nav mr-auto">
+                        <li class="nav-item" >
+                          <a class="nav-link active" aria-current="page" href="producto">Productos</a>
+                        </li>
 
-              <li class="nav-item" >
-                <a class="nav-link active" aria-current="page" href="">Carrito</a>
-              </li>
-              
-            </li>
-            <li class="nav-item">
-       <a class="nav-link" href="/categoria">Categoria</a>
-     </li>
-              
-              
-              
-            </ul>
+                        <li class="nav-item" >
+                          <a class="nav-link active" aria-current="page" href="">Carrito</a>
+                        </li>
+                        
+                      
+                      <li class="nav-item">
+                        <a class="nav-link" href="/categoria">Categoria</a>
+                      </li>
+                      
+               </ul> 
+                      <ul class="navbar-nav">                      
+                      <li class="nav-item justify-content-end " >
+                        <a class="nav-link " aria-current="page" >Hola ${nombre_usuario}! </a>
+                      </li>
+                      </ul>
+
+                      
+               
           </div>
         </div>
       </nav>    

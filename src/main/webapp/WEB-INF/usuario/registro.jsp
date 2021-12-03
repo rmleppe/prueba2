@@ -13,33 +13,38 @@
 
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light" >
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">NTT data</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          
-        </div>
-      </nav>
-<div class="container">  
+<div class="col d-flex justify-content-center">	
+	<div class="col-sm-6 ">  
+		<div class="card border-secondary mb-3" style="top: 75px;">
+			
+				<div class="card-body" >
+				
+					<form:form method="post" action="/usuario/registrar" modelAttribute="usuario">
+						<input type="hidden" name="_method" value="put">
+						<form:label path="nombre" class="col-sm-2 col-form-label">Nombre:</form:label>
+						<form:input type="text" path="nombre" class="form-control"/>
+						<br>
+						<form:label path="email" class="col-sm-2 col-form-label">Email:</form:label>
+						<form:input type="email" path="email" class="form-control"/>
+						<br>
+						<form:label path="pass" class="col-sm-2 col-form-label">Contrasena:</form:label>
+						<form:input type="password" path="pass" class="form-control"/>
+						<br>
+						<form:label path="passConfirmation" class="col-sm-6 col-form-label">Confirme Contrasena:</form:label>
+						<form:input type="password" path="passConfirmation" class="form-control"/>
+						<br>
+						<input type="reset" class="btn btn-secondary" value="Limpiar">
+						<input type="submit" class="btn btn-primary" value="Registrar">
+						
+						
+					</form:form>
 
-	<form:form method="post" action="/usuario/registrar" modelAttribute="usuario">
-			<form:label path="nombre">Nombre</form:label>
-			<form:input type="text" path="nombre"/>
-			<br>
-			<form:label path="email">email</form:label>
-			<form:input type="text" path="email"/>
-			<br>
-			<form:label path="pass">Contrasena</form:label>
-			<form:input type="password" path="pass"/>
-			<br>
-		
-			<input type="button" class="btn btn-secondary" value="Limpiar">
-			<input type="submit" class="btn btn-primary" value="Submit">
-	
-	</form:form> 
-			<table class="table">
+				</div>
+			
+		</div>
+	</div>		
+</div>	
+			<!-- <table class="table">
 				  <thead>
 				    <tr>
 				      <th scope="col">#</th>
@@ -70,10 +75,10 @@
 				  		</c:forEach>  
 				  </tbody>			
 				</table>
-				
+				 -->
 	
 				
 	
-	</div>
+	
 </body>
 </html>

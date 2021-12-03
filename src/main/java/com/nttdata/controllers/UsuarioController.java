@@ -1,5 +1,8 @@
 package com.nttdata.controllers;
 
+import java.security.Principal;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +32,63 @@ public class UsuarioController {
 		return "usuarios/usuario";
 	}
 	
+	@RequestMapping("/registrarjsp")
+	public String registrarjsp(@ModelAttribute("usuario") Usuario usuario) {
+
+		return "usuario/registro.jsp";
+	}
+	//METODO PARA EL BOTON REGISTRAR EN REGISTRO.JSP
+			@RequestMapping("/registrar")
+			public String registrar(@Valid @ModelAttribute("usuario") Usuario usuario)
+			{
+				System.out.println("si");
+				Usuario usuario2 = usuarioService.findByEmail(usuario.getEmail());
+				if(usuario2!=null) {
+					System.out.println("usuario existe");
+				}else {
+					//usuarioService.registroUsuario(usuario);
+					usuarioService.persistirUsuarioRol(usuario);
+				}
+				//retorno mensaje
+				
+				return "redirect:/login";
+			}
+			
 	//capturr¿ar la info de formulario
-		@RequestMapping("/registrar")
-		public String login(@Valid@ModelAttribute("usuario") Usuario usuario) {
-			//System.out.println(usuario.getNombre()+" "+usuario.getApellido()+" "+usuario.getLimite()+" "+usuario.getCodigoPostal());
+			@RequestMapping("/login")
+			public String login(Principal principal, Model model,HttpSession session) {
+				
+				String nombre = principal.getName();
+				
+				Usuario usuario= usuarioService.findByNombre(nombre);
+				model.addAttribute("nombre_usuario", usuario.getNombre());
+				
+				
+				return "home";
+				
+			}
+		
+		/*public String login(@RequestParam("email")String email,
+				@RequestParam("pass") String pass,
+				HttpSession session) {
+				
 			
-			usuarioService.insertarUsuario(usuario);
-			return "redirect:/usuario";
+			boolean resultado = usuarioService.loginUsuario(email, pass);
+			if(resultado) {
+				Usuario usuario = usuarioService.findByEmail(email);
+				//almacenando varibles de sesion
+				session.setAttribute("usuario_id", usuario.getId());
+				session.setAttribute("nombre_usuario", usuario.getNombre());
+				return "redirect:/home";
+				
+			}else {
+				
+				return "redirect:/login";
+			}
 			
-			
-		}
+		}*/
+	
+		
 		
 		@RequestMapping("/eliminar")
 		public String eliminarUsuario(@RequestParam("id") Long id) {
@@ -54,6 +104,8 @@ public class UsuarioController {
 			return "redirect:/usuario";
 	
 		}
+		
+		
 		
 		//llamar para editar
 				@RequestMapping("/{id}/editar")
